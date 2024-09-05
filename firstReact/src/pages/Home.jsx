@@ -1,14 +1,19 @@
 import Header from "../components/Header/Header"
+import Banner from "../components/Banner/Banner"
 import Footer from "../components/Footer/Footer"
 import Button from "../components/Button/Button"
+import Hero from "../components/Hero/Hero"
+import ProjectsList from "../components/ProjectsList/ProjectsList"
 
 function Home() {
     return (
         <>
         <Header/>
-        <h1>Home</h1>
-        <p>Subtitle</p>
-        <Button buttonStyle="primary" arrow>Olá</Button>
+        <div className="container">
+        <Hero />
+        <ProjectsList />
+        </div>
+        
         <Footer/>
         
         </>
