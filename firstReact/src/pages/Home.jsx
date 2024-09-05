@@ -1,13 +1,16 @@
 import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
+import Button from "../components/Button/Button"
 
 function Home() {
     return (
         <>
-        <Header></Header>
+        <Header/>
         <h1>Home</h1>
         <p>Subtitle</p>
-        <Footer></Footer>
+        <Button buttonStyle="primary" arrow>Olá</Button>
+        <Footer/>
+        
         </>
     )
 }
