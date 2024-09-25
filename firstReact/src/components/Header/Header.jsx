@@ -14,7 +14,7 @@ import Button from '../Button/Button'
 
 function Header () {
     const [isOpen, setIsOpen] = useState(false)
-    const toggleMenu = () => {
+    const toggleMenu =  () => {
         setIsOpen (!isOpen)
     }
     return (
@@ -27,8 +27,7 @@ function Header () {
                             Menu
                         </Button>
                     </div>
-                </div>
-                <nav className={`${isOpen ? 'open' : ''}`}>
+                    <nav className={`${isOpen ? 'open' : ''}`}>
                     <Button buttonStyle="unstyled" className="mobile-menu close-btn" onClick={toggleMenu}>
                         X
                     </Button>
@@ -39,6 +38,8 @@ function Header () {
                         <li><Link to="/contact">Contact</Link></li>
                     </ul>
                 </nav>
+                </div>
+                
             </div>
         </header>
     )
