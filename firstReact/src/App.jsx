@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
-
+import { useContext } from 'react'
 
 // PAGES
 import Home from './pages/Home'
@@ -9,13 +9,18 @@ import Contact from './pages/Contact'
 
 //UTILS
 import ScrollToTop from './ultis/ScrollTop'
+import { AppContext } from './contexts/AppContext'
 
 
 
 
 
 function App() {
-  
+  const appContext = useContext(AppContext)
+
+  if (appContext.loading) {
+    return 'Loading...'
+  }
 
   return (
     <Router>
