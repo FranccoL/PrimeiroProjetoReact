@@ -54,6 +54,7 @@ footer .social-links a {
     column-gap: 23px;
 }
 
+
 @media (max-width: 768px){
     .footer-col {
         margin:0 0 0 0;
