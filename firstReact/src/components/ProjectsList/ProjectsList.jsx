@@ -8,15 +8,30 @@ import { AppContext } from '../../contexts/AppContext'
 
 //ASSETS
 import LikedFilled from '../../assets/like-filled.svg'
-import Like from '../../assets/like.svg'
+import LikeOutline from '../../assets/like.svg'
 
+// COMPONENTS
+import Button from '../Button/Button'
 
 // UTILS
 import { getApiData } from '../../services/apiServices'
 
 function ProjectList() {
     const [projects, setProjects] = useState([]);
+    const [favProjects, setFavProject] = useState([])
     const appContext = useContext (AppContext)
+    const handleSavedProjects = (id) => {
+        setFavProject((prevFavProjects)=>{
+            if (prevFavProjects.includes(id)) {
+                const filterArray = prevFavProjects.filter((projectId) => projectId !== id)
+                sessionStorage.setItem('favProjects', JSON.stringify(filterArray))
+                return prevFavProjects.filter((projectId) => projectId !== id)
+            } else {
+                sessionStorage.setItem('favProjects', JSON.stringify([...prevFavProjects, id]))
+                return [...prevFavProjects, id]
+            }
+        })
+    }
     
 
     useEffect(() => {
@@ -31,6 +46,13 @@ function ProjectList() {
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        const savedFavProjects = JSON.parse(sessionStorage.getItem('favProjects'))
+        if (savedFavProjects) {
+            setFavProject(savedFavProjects)
+        }
+    }, [])
 
 
     return (
@@ -49,7 +71,10 @@ function ProjectList() {
                                 ></div>
                             <h3>{project.title}</h3>
                             <p> {project.subtitle}</p>
-                            <img src={LikedFilled} height="20px" />
+                            <Button buttonStyle="unstyled" onClick={() => handleSavedProjects(project.id)}>
+                                <img src={favProjects.includes(project.id) ? LikedFilled : LikeOutline} height="20px" /> 
+                            </Button>
+                            
                         </div>
                     ))
                 }                         

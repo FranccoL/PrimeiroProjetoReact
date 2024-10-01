@@ -15,7 +15,7 @@ function Projects() {
     return (
         <>
         <Header/>
-        <Banner title={appContext.languages[appContext.language].menu.contact} image="projects.jpg"/>
+        <Banner title={appContext.languages[appContext.language].menu.projects} image="projects.jpg"/>
         <div className="container">
         
         <ProjectsList />
